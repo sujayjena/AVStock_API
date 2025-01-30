@@ -23,6 +23,178 @@ namespace AVStock.API.Controllers.Admin
             _response = new ResponseModel();
             _response.IsSuccess = true;
         }
+
+        #region Lab Name
+
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<ResponseModel> SaveLabName(LabName_Request parameters)
+        {
+            int result = await _productItemRepository.SaveLabName(parameters);
+
+            if (result == (int)SaveOperationEnums.NoRecordExists)
+            {
+                _response.Message = "No record exists";
+            }
+            else if (result == (int)SaveOperationEnums.ReocrdExists)
+            {
+                _response.Message = "Record already exists";
+            }
+            else if (result == (int)SaveOperationEnums.NoResult)
+            {
+                _response.Message = "Something went wrong, please try again";
+            }
+            else
+            {
+                _response.Message = "Record details saved sucessfully";
+            }
+
+            _response.Id = result;
+            return _response;
+        }
+
+
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<ResponseModel> GetLabNameList(BaseSearchEntity parameters)
+        {
+            IEnumerable<LabName_Response> lstRoles = await _productItemRepository.GetLabNameList(parameters);
+            _response.Data = lstRoles.ToList();
+            _response.Total = parameters.Total;
+            return _response;
+        }
+
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<ResponseModel> GetLabNameById(int Id)
+        {
+            if (Id <= 0)
+            {
+                _response.Message = "Id is required";
+            }
+            else
+            {
+                var vResultObj = await _productItemRepository.GetLabNameById(Id);
+                _response.Data = vResultObj;
+            }
+            return _response;
+        }
+        #endregion
+
+        #region Machine Name
+
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<ResponseModel> SaveMachineName(MachineName_Request parameters)
+        {
+            int result = await _productItemRepository.SaveMachineName(parameters);
+
+            if (result == (int)SaveOperationEnums.NoRecordExists)
+            {
+                _response.Message = "No record exists";
+            }
+            else if (result == (int)SaveOperationEnums.ReocrdExists)
+            {
+                _response.Message = "Record already exists";
+            }
+            else if (result == (int)SaveOperationEnums.NoResult)
+            {
+                _response.Message = "Something went wrong, please try again";
+            }
+            else
+            {
+                _response.Message = "Record details saved sucessfully";
+            }
+
+            _response.Id = result;
+            return _response;
+        }
+
+
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<ResponseModel> GetMachineNameList(BaseSearchEntity parameters)
+        {
+            IEnumerable<MachineName_Response> lstRoles = await _productItemRepository.GetMachineNameList(parameters);
+            _response.Data = lstRoles.ToList();
+            _response.Total = parameters.Total;
+            return _response;
+        }
+
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<ResponseModel> GetMachineNameById(int Id)
+        {
+            if (Id <= 0)
+            {
+                _response.Message = "Id is required";
+            }
+            else
+            {
+                var vResultObj = await _productItemRepository.GetMachineNameById(Id);
+                _response.Data = vResultObj;
+            }
+            return _response;
+        }
+        #endregion
+
+        #region Item Name
+
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<ResponseModel> SaveItemName(ItemName_Request parameters)
+        {
+            int result = await _productItemRepository.SaveItemName(parameters);
+
+            if (result == (int)SaveOperationEnums.NoRecordExists)
+            {
+                _response.Message = "No record exists";
+            }
+            else if (result == (int)SaveOperationEnums.ReocrdExists)
+            {
+                _response.Message = "Record already exists";
+            }
+            else if (result == (int)SaveOperationEnums.NoResult)
+            {
+                _response.Message = "Something went wrong, please try again";
+            }
+            else
+            {
+                _response.Message = "Record details saved sucessfully";
+            }
+
+            _response.Id = result;
+            return _response;
+        }
+
+
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<ResponseModel> GetItemNameList(BaseSearchEntity parameters)
+        {
+            IEnumerable<ItemName_Response> lstRoles = await _productItemRepository.GetItemNameList(parameters);
+            _response.Data = lstRoles.ToList();
+            _response.Total = parameters.Total;
+            return _response;
+        }
+
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<ResponseModel> GetItemNameById(int Id)
+        {
+            if (Id <= 0)
+            {
+                _response.Message = "Id is required";
+            }
+            else
+            {
+                var vResultObj = await _productItemRepository.GetItemNameById(Id);
+                _response.Data = vResultObj;
+            }
+            return _response;
+        }
+        #endregion
+
         /*
         #region Product Category
 

@@ -10,13 +10,36 @@ namespace AVStock.Application.Interfaces
 {
     public interface IProductItemRepository
     {
-        /*
-        #region Product Category
-        Task<int> SaveProductCategory(ProductCategory_Request parameters);
+        #region Lab Name
 
-        Task<IEnumerable<ProductCategory_Response>> GetProductCategoryList(BaseSearchEntity parameters);
+        Task<int> SaveLabName(LabName_Request parameters);
+        Task<IEnumerable<LabName_Response>> GetLabNameList(BaseSearchEntity parameters);
+        Task<LabName_Response?> GetLabNameById(int Id);
 
-        Task<ProductCategory_Response?> GetProductCategoryById(int Id);
+        #endregion
+
+        #region Machine Name
+
+        Task<int> SaveMachineName(MachineName_Request parameters);
+        Task<IEnumerable<MachineName_Response>> GetMachineNameList(BaseSearchEntity parameters);
+        Task<MachineName_Response?> GetMachineNameById(int Id);
+
+        #endregion
+
+        #region Item Name
+
+        Task<int> SaveItemName(ItemName_Request parameters);
+        Task<IEnumerable<ItemName_Response>> GetItemNameList(BaseSearchEntity parameters);
+        Task<ItemName_Response?> GetItemNameById(int Id);
+
+        #endregion
+
+        #region Category
+        Task<int> SaveCategory(Category_Request parameters);
+
+        Task<IEnumerable<Category_Response>> GetCategoryList(BaseSearchEntity parameters);
+
+        Task<Category_Response?> GetCategoryById(int Id);
         #endregion
 
         #region Sub Category
@@ -26,6 +49,9 @@ namespace AVStock.Application.Interfaces
 
         Task<SubCategory_Response?> GetSubCategoryById(int Id);
         #endregion
+
+        /*
+       
 
         #region Segment
         Task<int> SaveSegment(Segment_Request parameters);

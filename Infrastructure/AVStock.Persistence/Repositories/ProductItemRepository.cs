@@ -20,20 +20,20 @@ namespace AVStock.Persistence.Repositories
         {
             _configuration = configuration;
         }
-        /*
-        #region Product Category
-        public async Task<int> SaveProductCategory(ProductCategory_Request parameters)
+
+        #region Lab Name
+        public async Task<int> SaveLabName(LabName_Request parameters)
         {
             DynamicParameters queryParameters = new DynamicParameters();
             queryParameters.Add("@Id", parameters.Id);
-            queryParameters.Add("@ProductCategory", parameters.ProductCategory.SanitizeValue());
+            queryParameters.Add("@LabName", parameters.LabName.SanitizeValue());
             queryParameters.Add("@IsActive", parameters.IsActive);
             queryParameters.Add("@UserId", SessionManager.LoggedInUserId);
 
-            return await SaveByStoredProcedure<int>("SaveProductCategory", queryParameters);
+            return await SaveByStoredProcedure<int>("SaveLabName", queryParameters);
         }
 
-        public async Task<IEnumerable<ProductCategory_Response>> GetProductCategoryList(BaseSearchEntity parameters)
+        public async Task<IEnumerable<LabName_Response>> GetLabNameList(BaseSearchEntity parameters)
         {
             DynamicParameters queryParameters = new DynamicParameters();
             queryParameters.Add("@SearchText", parameters.SearchText.SanitizeValue());
@@ -43,17 +43,128 @@ namespace AVStock.Persistence.Repositories
             queryParameters.Add("@Total", parameters.Total, null, System.Data.ParameterDirection.Output);
             queryParameters.Add("@UserId", SessionManager.LoggedInUserId);
 
-            var result = await ListByStoredProcedure<ProductCategory_Response>("GetProductCategoryList", queryParameters);
+            var result = await ListByStoredProcedure<LabName_Response>("GetLabNameList", queryParameters);
             parameters.Total = queryParameters.Get<int>("Total");
 
             return result;
         }
 
-        public async Task<ProductCategory_Response?> GetProductCategoryById(int Id)
+        public async Task<LabName_Response?> GetLabNameById(int Id)
         {
             DynamicParameters queryParameters = new DynamicParameters();
             queryParameters.Add("@Id", Id);
-            return (await ListByStoredProcedure<ProductCategory_Response>("GetProductCategoryById", queryParameters)).FirstOrDefault();
+            return (await ListByStoredProcedure<LabName_Response>("GetLabNameById", queryParameters)).FirstOrDefault();
+        }
+
+        #endregion
+
+        #region Machine Name
+        public async Task<int> SaveMachineName(MachineName_Request parameters)
+        {
+            DynamicParameters queryParameters = new DynamicParameters();
+            queryParameters.Add("@Id", parameters.Id);
+            queryParameters.Add("@MachineName", parameters.MachineName.SanitizeValue());
+            queryParameters.Add("@IsActive", parameters.IsActive);
+            queryParameters.Add("@UserId", SessionManager.LoggedInUserId);
+
+            return await SaveByStoredProcedure<int>("SaveMachineName", queryParameters);
+        }
+
+        public async Task<IEnumerable<MachineName_Response>> GetMachineNameList(BaseSearchEntity parameters)
+        {
+            DynamicParameters queryParameters = new DynamicParameters();
+            queryParameters.Add("@SearchText", parameters.SearchText.SanitizeValue());
+            queryParameters.Add("@IsActive", parameters.IsActive);
+            queryParameters.Add("@PageNo", parameters.PageNo);
+            queryParameters.Add("@PageSize", parameters.PageSize);
+            queryParameters.Add("@Total", parameters.Total, null, System.Data.ParameterDirection.Output);
+            queryParameters.Add("@UserId", SessionManager.LoggedInUserId);
+
+            var result = await ListByStoredProcedure<MachineName_Response>("GetMachineNameList", queryParameters);
+            parameters.Total = queryParameters.Get<int>("Total");
+
+            return result;
+        }
+
+        public async Task<MachineName_Response?> GetMachineNameById(int Id)
+        {
+            DynamicParameters queryParameters = new DynamicParameters();
+            queryParameters.Add("@Id", Id);
+            return (await ListByStoredProcedure<MachineName_Response>("GetMachineNameById", queryParameters)).FirstOrDefault();
+        }
+
+        #endregion
+
+        #region Item Name
+        public async Task<int> SaveItemName(ItemName_Request parameters)
+        {
+            DynamicParameters queryParameters = new DynamicParameters();
+            queryParameters.Add("@Id", parameters.Id);
+            queryParameters.Add("@ItemName", parameters.ItemName.SanitizeValue());
+            queryParameters.Add("@IsActive", parameters.IsActive);
+            queryParameters.Add("@UserId", SessionManager.LoggedInUserId);
+
+            return await SaveByStoredProcedure<int>("SaveItemName", queryParameters);
+        }
+
+        public async Task<IEnumerable<ItemName_Response>> GetItemNameList(BaseSearchEntity parameters)
+        {
+            DynamicParameters queryParameters = new DynamicParameters();
+            queryParameters.Add("@SearchText", parameters.SearchText.SanitizeValue());
+            queryParameters.Add("@IsActive", parameters.IsActive);
+            queryParameters.Add("@PageNo", parameters.PageNo);
+            queryParameters.Add("@PageSize", parameters.PageSize);
+            queryParameters.Add("@Total", parameters.Total, null, System.Data.ParameterDirection.Output);
+            queryParameters.Add("@UserId", SessionManager.LoggedInUserId);
+
+            var result = await ListByStoredProcedure<ItemName_Response>("GetItemNameList", queryParameters);
+            parameters.Total = queryParameters.Get<int>("Total");
+
+            return result;
+        }
+
+        public async Task<ItemName_Response?> GetItemNameById(int Id)
+        {
+            DynamicParameters queryParameters = new DynamicParameters();
+            queryParameters.Add("@Id", Id);
+            return (await ListByStoredProcedure<ItemName_Response>("GetItemNameById", queryParameters)).FirstOrDefault();
+        }
+
+        #endregion
+
+        #region Category
+        public async Task<int> SaveCategory(Category_Request parameters)
+        {
+            DynamicParameters queryParameters = new DynamicParameters();
+            queryParameters.Add("@Id", parameters.Id);
+            queryParameters.Add("@Category", parameters.Category.SanitizeValue());
+            queryParameters.Add("@IsActive", parameters.IsActive);
+            queryParameters.Add("@UserId", SessionManager.LoggedInUserId);
+
+            return await SaveByStoredProcedure<int>("SaveCategory", queryParameters);
+        }
+
+        public async Task<IEnumerable<Category_Response>> GetCategoryList(BaseSearchEntity parameters)
+        {
+            DynamicParameters queryParameters = new DynamicParameters();
+            queryParameters.Add("@SearchText", parameters.SearchText.SanitizeValue());
+            queryParameters.Add("@IsActive", parameters.IsActive);
+            queryParameters.Add("@PageNo", parameters.PageNo);
+            queryParameters.Add("@PageSize", parameters.PageSize);
+            queryParameters.Add("@Total", parameters.Total, null, System.Data.ParameterDirection.Output);
+            queryParameters.Add("@UserId", SessionManager.LoggedInUserId);
+
+            var result = await ListByStoredProcedure<Category_Response>("GetCategoryList", queryParameters);
+            parameters.Total = queryParameters.Get<int>("Total");
+
+            return result;
+        }
+
+        public async Task<Category_Response?> GetCategoryById(int Id)
+        {
+            DynamicParameters queryParameters = new DynamicParameters();
+            queryParameters.Add("@Id", Id);
+            return (await ListByStoredProcedure<Category_Response>("GetCategoryById", queryParameters)).FirstOrDefault();
         }
 
         #endregion
@@ -95,6 +206,7 @@ namespace AVStock.Persistence.Repositories
 
         #endregion
 
+        /*
         #region Segment
         public async Task<int> SaveSegment(Segment_Request parameters)
         {

@@ -11,18 +11,72 @@ namespace AVStock.Application.Models
     {
     }
 
-    #region Product Category
+    #region Lab Name
 
-    public class ProductCategory_Request : BaseEntity
+    public class LabName_Request : BaseEntity
     {
-        public string? ProductCategory { get; set; }
+        public string? LabName { get; set; }
 
         public bool? IsActive { get; set; }
     }
 
-    public class ProductCategory_Response : BaseResponseEntity
+    public class LabName_Response : BaseResponseEntity
     {
-        public string? ProductCategory { get; set; }
+        public string? LabName { get; set; }
+
+        public bool? IsActive { get; set; }
+    }
+
+    #endregion
+
+    #region Machine Name
+
+    public class MachineName_Request : BaseEntity
+    {
+        public string? MachineName { get; set; }
+
+        public bool? IsActive { get; set; }
+    }
+
+    public class MachineName_Response : BaseResponseEntity
+    {
+        public string? MachineName { get; set; }
+
+        public bool? IsActive { get; set; }
+    }
+
+    #endregion
+
+    #region Item Name
+
+    public class ItemName_Request : BaseEntity
+    {
+        public string? ItemName { get; set; }
+
+        public bool? IsActive { get; set; }
+    }
+
+    public class ItemName_Response : BaseResponseEntity
+    {
+        public string? ItemName { get; set; }
+
+        public bool? IsActive { get; set; }
+    }
+
+    #endregion
+
+    #region Category
+
+    public class Category_Request : BaseEntity
+    {
+        public string? Category { get; set; }
+
+        public bool? IsActive { get; set; }
+    }
+
+    public class Category_Response : BaseResponseEntity
+    {
+        public string? Category { get; set; }
 
         public bool? IsActive { get; set; }
     }
