@@ -253,6 +253,122 @@ namespace AVStock.API.Controllers.Admin
 
         #endregion
 
+        #region Sub Category
+
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<ResponseModel> SaveSubCategory(SubCategory_Request parameters)
+        {
+            int result = await _productItemRepository.SaveSubCategory(parameters);
+
+            if (result == (int)SaveOperationEnums.NoRecordExists)
+            {
+                _response.Message = "No record exists";
+            }
+            else if (result == (int)SaveOperationEnums.ReocrdExists)
+            {
+                _response.Message = "Record already exists";
+            }
+            else if (result == (int)SaveOperationEnums.NoResult)
+            {
+                _response.Message = "Something went wrong, please try again";
+            }
+            else
+            {
+                _response.Message = "Record details saved sucessfully";
+            }
+
+            _response.Id = result;
+            return _response;
+        }
+
+
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<ResponseModel> GetSubCategoryList(BaseSearchEntity parameters)
+        {
+            IEnumerable<SubCategory_Response> lstRoles = await _productItemRepository.GetSubCategoryList(parameters);
+            _response.Data = lstRoles.ToList();
+            _response.Total = parameters.Total;
+            return _response;
+        }
+
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<ResponseModel> GetSubCategoryById(int Id)
+        {
+            if (Id <= 0)
+            {
+                _response.Message = "Id is required";
+            }
+            else
+            {
+                var vResultObj = await _productItemRepository.GetSubCategoryById(Id);
+                _response.Data = vResultObj;
+            }
+            return _response;
+        }
+
+        #endregion
+
+        #region Storage Location
+
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<ResponseModel> SaveStorageLocation(StorageLocation_Request parameters)
+        {
+            int result = await _productItemRepository.SaveStorageLocation(parameters);
+
+            if (result == (int)SaveOperationEnums.NoRecordExists)
+            {
+                _response.Message = "No record exists";
+            }
+            else if (result == (int)SaveOperationEnums.ReocrdExists)
+            {
+                _response.Message = "Record already exists";
+            }
+            else if (result == (int)SaveOperationEnums.NoResult)
+            {
+                _response.Message = "Something went wrong, please try again";
+            }
+            else
+            {
+                _response.Message = "Record details saved sucessfully";
+            }
+
+            _response.Id = result;
+            return _response;
+        }
+
+
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<ResponseModel> GetStorageLocationList(BaseSearchEntity parameters)
+        {
+            IEnumerable<StorageLocation_Response> lstRoles = await _productItemRepository.GetStorageLocationList(parameters);
+            _response.Data = lstRoles.ToList();
+            _response.Total = parameters.Total;
+            return _response;
+        }
+
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<ResponseModel> GetStorageLocationById(int Id)
+        {
+            if (Id <= 0)
+            {
+                _response.Message = "Id is required";
+            }
+            else
+            {
+                var vResultObj = await _productItemRepository.GetStorageLocationById(Id);
+                _response.Data = vResultObj;
+            }
+            return _response;
+        }
+
+        #endregion
+
         /*
        [Route("[action]")]
        [HttpPost]
@@ -324,64 +440,6 @@ namespace AVStock.API.Controllers.Admin
        }
 
        #endregion
-
-      #region Sub Category
-
-      [Route("[action]")]
-      [HttpPost]
-      public async Task<ResponseModel> SaveSubCategory(SubCategory_Request parameters)
-      {
-          int result = await _productItemRepository.SaveSubCategory(parameters);
-
-          if (result == (int)SaveOperationEnums.NoRecordExists)
-          {
-              _response.Message = "No record exists";
-          }
-          else if (result == (int)SaveOperationEnums.ReocrdExists)
-          {
-              _response.Message = "Record already exists";
-          }
-          else if (result == (int)SaveOperationEnums.NoResult)
-          {
-              _response.Message = "Something went wrong, please try again";
-          }
-          else
-          {
-              _response.Message = "Record details saved sucessfully";
-          }
-
-          _response.Id = result;
-          return _response;
-      }
-
-
-      [Route("[action]")]
-      [HttpPost]
-      public async Task<ResponseModel> GetSubCategoryList(BaseSearchEntity parameters)
-      {
-          IEnumerable<SubCategory_Response> lstRoles = await _productItemRepository.GetSubCategoryList(parameters);
-          _response.Data = lstRoles.ToList();
-          _response.Total = parameters.Total;
-          return _response;
-      }
-
-      [Route("[action]")]
-      [HttpPost]
-      public async Task<ResponseModel> GetSubCategoryById(int Id)
-      {
-          if (Id <= 0)
-          {
-              _response.Message = "Id is required";
-          }
-          else
-          {
-              var vResultObj = await _productItemRepository.GetSubCategoryById(Id);
-              _response.Data = vResultObj;
-          }
-          return _response;
-      }
-
-      #endregion
 
       #region Segment
       [Route("[action]")]

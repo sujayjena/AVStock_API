@@ -206,6 +206,43 @@ namespace AVStock.Persistence.Repositories
 
         #endregion
 
+        #region Storage Location
+        public async Task<int> SaveStorageLocation(StorageLocation_Request parameters)
+        {
+            DynamicParameters queryParameters = new DynamicParameters();
+            queryParameters.Add("@Id", parameters.Id);
+            queryParameters.Add("@StorageLocation", parameters.StorageLocation);
+            queryParameters.Add("@IsActive", parameters.IsActive);
+            queryParameters.Add("@UserId", SessionManager.LoggedInUserId);
+
+            return await SaveByStoredProcedure<int>("SaveStorageLocation", queryParameters);
+        }
+
+        public async Task<IEnumerable<StorageLocation_Response>> GetStorageLocationList(BaseSearchEntity parameters)
+        {
+            DynamicParameters queryParameters = new DynamicParameters();
+            queryParameters.Add("@SearchText", parameters.SearchText.SanitizeValue());
+            queryParameters.Add("@IsActive", parameters.IsActive);
+            queryParameters.Add("@PageNo", parameters.PageNo);
+            queryParameters.Add("@PageSize", parameters.PageSize);
+            queryParameters.Add("@Total", parameters.Total, null, System.Data.ParameterDirection.Output);
+            queryParameters.Add("@UserId", SessionManager.LoggedInUserId);
+
+            var result = await ListByStoredProcedure<StorageLocation_Response>("GetStorageLocationList", queryParameters);
+            parameters.Total = queryParameters.Get<int>("Total");
+
+            return result;
+        }
+
+        public async Task<StorageLocation_Response?> GetStorageLocationById(int Id)
+        {
+            DynamicParameters queryParameters = new DynamicParameters();
+            queryParameters.Add("@Id", Id);
+            return (await ListByStoredProcedure<StorageLocation_Response>("GetStorageLocationById", queryParameters)).FirstOrDefault();
+        }
+
+        #endregion
+
         /*
         #region Segment
         public async Task<int> SaveSegment(Segment_Request parameters)

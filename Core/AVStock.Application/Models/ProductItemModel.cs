@@ -101,6 +101,24 @@ namespace AVStock.Application.Models
 
     #endregion
 
+    #region Storage Location
+
+    public class StorageLocation_Request : BaseEntity
+    {
+        public string? StorageLocation { get; set; }
+
+        public bool? IsActive { get; set; }
+    }
+
+    public class StorageLocation_Response : BaseResponseEntity
+    {
+        public string? StorageLocation { get; set; }
+
+        public bool? IsActive { get; set; }
+    }
+
+    #endregion
+
     #region Segment
 
     public class Segment_Request : BaseEntity

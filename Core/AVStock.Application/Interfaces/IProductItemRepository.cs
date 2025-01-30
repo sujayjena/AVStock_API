@@ -50,8 +50,15 @@ namespace AVStock.Application.Interfaces
         Task<SubCategory_Response?> GetSubCategoryById(int Id);
         #endregion
 
+        #region Storage Location
+        Task<int> SaveStorageLocation(StorageLocation_Request parameters);
+
+        Task<IEnumerable<StorageLocation_Response>> GetStorageLocationList(BaseSearchEntity parameters);
+
+        Task<StorageLocation_Response?> GetStorageLocationById(int Id);
+        #endregion
+
         /*
-       
 
         #region Segment
         Task<int> SaveSegment(Segment_Request parameters);
