@@ -58,103 +58,29 @@ namespace AVStock.Application.Interfaces
         Task<StorageLocation_Response?> GetStorageLocationById(int Id);
         #endregion
 
-        /*
+        #region Item Status
+        Task<int> SaveItemStatus(ItemStatus_Request parameters);
 
-        #region Segment
-        Task<int> SaveSegment(Segment_Request parameters);
+        Task<IEnumerable<ItemStatus_Response>> GetItemStatusList(BaseSearchEntity parameters);
 
-        Task<IEnumerable<Segment_Response>> GetSegmentList(BaseSearchEntity parameters);
-
-        Task<Segment_Response?> GetSegmentById(int Id);
+        Task<ItemStatus_Response?> GetItemStatusById(int Id);
         #endregion
 
-        #region Sub Segment
-        Task<int> SaveSubSegment(SubSegment_Request parameters);
+        #region SKU
+        Task<int> SaveSKU(SKU_Request parameters);
 
-        Task<IEnumerable<SubSegment_Response>> GetSubSegmentList(BaseSearchEntity parameters);
+        Task<IEnumerable<SKU_Response>> GetSKUList(BaseSearchEntity parameters);
 
-        Task<SubSegment_Response?> GetSubSegmentById(int Id);
+        Task<SKU_Response?> GetSKUById(int Id);
         #endregion
 
-        #region Cell Chemistry
-        Task<int> SaveCellChemistry(CellChemistry_Request parameters);
+        #region Product Master
+        Task<int> SaveProductMaster(ProductMaster_Request parameters);
 
-        Task<IEnumerable<CellChemistry_Response>> GetCellChemistryList(BaseSearchEntity parameters);
+        Task<IEnumerable<ProductMaster_Response>> GetProductMasterList(BaseSearchEntity parameters);
 
-        Task<CellChemistry_Response?> GetCellChemistryById(int Id);
+        Task<ProductMaster_Response?> GetProductMasterById(int Id);
         #endregion
 
-        #region Product Speces
-        Task<int> SaveProductSpeces(ProductSpeces_Request parameters);
-
-        Task<IEnumerable<ProductSpeces_Response>> GetProductSpecesList(BaseSearchEntity parameters);
-
-        Task<ProductSpeces_Response?> GetProductSpecesById(int Id);
-        #endregion
-
-        #region Item Category
-        Task<int> SaveItemCategory(ItemCategory_Request parameters);
-
-        Task<IEnumerable<ItemCategory_Response>> GetItemCategoryList(BaseSearchEntity parameters);
-
-        Task<ItemCategory_Response?> GetItemCategoryById(int Id);
-        #endregion
-
-        #region Item Description
-        Task<int> SaveItemDescription(ItemDescription_Request parameters);
-
-        Task<IEnumerable<ItemDescription_Response>> GetItemDescriptionList(BaseSearchEntity parameters);
-
-        Task<ItemDescription_Response?> GetItemDescriptionById(int Id);
-        #endregion
-
-        #region Product Type
-        Task<int> SaveProductType(ProductType_Request parameters);
-
-        Task<IEnumerable<ProductType_Response>> GetProductTypeList(BaseSearchEntity parameters);
-
-        Task<ProductType_Response?> GetProductTypeById(int Id);
-        #endregion
-
-        #region Product Make
-        Task<int> SaveProductMake(ProductMake_Request parameters);
-
-        Task<IEnumerable<ProductMake_Response>> GetProductMakeList(BaseSearchEntity parameters);
-
-        Task<ProductMake_Response?> GetProductMakeById(int Id);
-        #endregion
-
-        #region Product Model
-        Task<int> SaveProductModel(ProductModel_Request parameters);
-
-        Task<IEnumerable<ProductModel_Response>> GetProductModelList(BaseSearchEntity parameters);
-
-        Task<ProductModel_Response?> GetProductModelById(int Id);
-        #endregion
-
-        #region BMS Make
-        Task<int> SaveBMSMake(BMSMake_Request parameters);
-
-        Task<IEnumerable<BMSMake_Response>> GetBMSMakeList(BaseSearchEntity parameters);
-
-        Task<BMSMake_Response?> GetBMSMakeById(int Id);
-        #endregion
-
-        #region Type of BMS
-        Task<int> SaveTypeOfBMS(TypeOfBMS_Request parameters);
-
-        Task<IEnumerable<TypeOfBMS_Response>> GetTypeOfBMSList(BaseSearchEntity parameters);
-
-        Task<TypeOfBMS_Response?> GetTypeOfBMSById(int Id);
-        #endregion
-
-        #region Battery Physical Status
-        Task<int> SaveBatteryPhysicalStatus(BatteryPhysicalStatus_Request parameters);
-
-        Task<IEnumerable<BatteryPhysicalStatus_Response>> GetBatteryPhysicalStatusList(BaseSearchEntity parameters);
-
-        Task<BatteryPhysicalStatus_Response?> GetBatteryPhysicalStatusById(int Id);
-        #endregion
-        */
     }
 }
