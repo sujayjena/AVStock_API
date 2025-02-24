@@ -48,6 +48,7 @@ namespace AVStock.Persistence
             services.AddScoped<ISupplierRepository, SupplierRepository>();
             services.AddScoped<IProductDetailsRepository, ProductDetailsRepository>();
             services.AddScoped<IMasterInventoryRepository, MasterInventoryRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
         }
     }
 }

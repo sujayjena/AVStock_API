@@ -26,6 +26,7 @@ namespace AVStock.Persistence.Repositories
         {
             DynamicParameters queryParameters = new DynamicParameters();
             queryParameters.Add("@Id", parameters.Id);
+            queryParameters.Add("@ServiceCode", parameters.ServiceCode.SanitizeValue());
             queryParameters.Add("@LabName", parameters.LabName.SanitizeValue());
             queryParameters.Add("@IsActive", parameters.IsActive);
             queryParameters.Add("@UserId", SessionManager.LoggedInUserId);

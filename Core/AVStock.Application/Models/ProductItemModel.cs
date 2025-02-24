@@ -16,15 +16,15 @@ namespace AVStock.Application.Models
 
     public class LabName_Request : BaseEntity
     {
+        public string? ServiceCode { get; set; }
         public string? LabName { get; set; }
-
         public bool? IsActive { get; set; }
     }
 
     public class LabName_Response : BaseResponseEntity
     {
+        public string? ServiceCode { get; set; }
         public string? LabName { get; set; }
-
         public bool? IsActive { get; set; }
     }
 
