@@ -18,6 +18,7 @@ namespace AVStock.Application.Models
     {
         public string? ServiceCode { get; set; }
         public string? LabName { get; set; }
+        public int? DepartmentId { get; set; }
         public bool? IsActive { get; set; }
     }
 
@@ -25,6 +26,8 @@ namespace AVStock.Application.Models
     {
         public string? ServiceCode { get; set; }
         public string? LabName { get; set; }
+        public int? DepartmentId { get; set; }
+        public string? DepartmentName { get; set; }
         public bool? IsActive { get; set; }
     }
 
