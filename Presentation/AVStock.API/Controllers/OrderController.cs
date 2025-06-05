@@ -1,4 +1,5 @@
-﻿using AVStock.Application.Enums;
+﻿using AVStock.API.CustomAttributes;
+using AVStock.Application.Enums;
 using AVStock.Application.Helpers;
 using AVStock.Application.Interfaces;
 using AVStock.Application.Models;
@@ -27,6 +28,7 @@ namespace AVStock.API.Controllers
 
         [Route("[action]")]
         [HttpPost]
+        [AllowAnonymous]
         public async Task<ResponseModel> SaveOrder(Order_Request parameters)
         {
             int result = await _orderRepository.SaveOrder(parameters);
@@ -66,6 +68,7 @@ namespace AVStock.API.Controllers
 
         [Route("[action]")]
         [HttpPost]
+        [AllowAnonymous]
         public async Task<ResponseModel> GetOrderList(Order_Search parameters)
         {
             var objList = await _orderRepository.GetOrderList(parameters);
@@ -76,6 +79,7 @@ namespace AVStock.API.Controllers
 
         [Route("[action]")]
         [HttpPost]
+        [AllowAnonymous]
         public async Task<ResponseModel> GetOrderById(int Id)
         {
             if (Id <= 0)

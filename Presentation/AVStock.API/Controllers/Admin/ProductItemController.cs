@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using OfficeOpenXml.Style;
 using OfficeOpenXml;
 using System.Globalization;
+using AVStock.API.CustomAttributes;
 
 namespace AVStock.API.Controllers.Admin
 {
@@ -28,6 +29,7 @@ namespace AVStock.API.Controllers.Admin
 
         [Route("[action]")]
         [HttpPost]
+        [AllowAnonymous]
         public async Task<ResponseModel> SaveLabName(LabName_Request parameters)
         {
             int result = await _productItemRepository.SaveLabName(parameters);
@@ -56,6 +58,7 @@ namespace AVStock.API.Controllers.Admin
 
         [Route("[action]")]
         [HttpPost]
+        [AllowAnonymous]
         public async Task<ResponseModel> GetLabNameList(BaseSearchEntity parameters)
         {
             IEnumerable<LabName_Response> lstRoles = await _productItemRepository.GetLabNameList(parameters);
@@ -66,6 +69,7 @@ namespace AVStock.API.Controllers.Admin
 
         [Route("[action]")]
         [HttpPost]
+        [AllowAnonymous]
         public async Task<ResponseModel> GetLabNameById(int Id)
         {
             if (Id <= 0)
