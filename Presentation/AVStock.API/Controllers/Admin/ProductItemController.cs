@@ -25,14 +25,14 @@ namespace AVStock.API.Controllers.Admin
             _response.IsSuccess = true;
         }
 
-        #region Lab Name
+        #region Lab Test
 
         [Route("[action]")]
         [HttpPost]
         [AllowAnonymous]
-        public async Task<ResponseModel> SaveLabName(LabName_Request parameters)
+        public async Task<ResponseModel> SaveLabTest(LabTest_Request parameters)
         {
-            int result = await _productItemRepository.SaveLabName(parameters);
+            int result = await _productItemRepository.SaveLabTest(parameters);
 
             if (result == (int)SaveOperationEnums.NoRecordExists)
             {
@@ -59,9 +59,9 @@ namespace AVStock.API.Controllers.Admin
         [Route("[action]")]
         [HttpPost]
         [AllowAnonymous]
-        public async Task<ResponseModel> GetLabNameList(BaseSearchEntity parameters)
+        public async Task<ResponseModel> GetLabTestList(BaseSearchEntity parameters)
         {
-            IEnumerable<LabName_Response> lstRoles = await _productItemRepository.GetLabNameList(parameters);
+            IEnumerable<LabTest_Response> lstRoles = await _productItemRepository.GetLabTestList(parameters);
             _response.Data = lstRoles.ToList();
             _response.Total = parameters.Total;
             return _response;
@@ -70,7 +70,7 @@ namespace AVStock.API.Controllers.Admin
         [Route("[action]")]
         [HttpPost]
         [AllowAnonymous]
-        public async Task<ResponseModel> GetLabNameById(int Id)
+        public async Task<ResponseModel> GetLabTestById(int Id)
         {
             if (Id <= 0)
             {
@@ -78,7 +78,67 @@ namespace AVStock.API.Controllers.Admin
             }
             else
             {
-                var vResultObj = await _productItemRepository.GetLabNameById(Id);
+                var vResultObj = await _productItemRepository.GetLabTestById(Id);
+                _response.Data = vResultObj;
+            }
+            return _response;
+        }
+        #endregion
+
+        #region Lab Sub Test
+
+        [Route("[action]")]
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<ResponseModel> SaveLabSubTest(LabSubTest_Request parameters)
+        {
+            int result = await _productItemRepository.SaveLabSubTest(parameters);
+
+            if (result == (int)SaveOperationEnums.NoRecordExists)
+            {
+                _response.Message = "No record exists";
+            }
+            else if (result == (int)SaveOperationEnums.ReocrdExists)
+            {
+                _response.Message = "Record already exists";
+            }
+            else if (result == (int)SaveOperationEnums.NoResult)
+            {
+                _response.Message = "Something went wrong, please try again";
+            }
+            else
+            {
+                _response.Message = "Record details saved successfully";
+            }
+
+            _response.Id = result;
+            return _response;
+        }
+
+
+        [Route("[action]")]
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<ResponseModel> GetLabSubTestList(BaseSearchEntity parameters)
+        {
+            IEnumerable<LabSubTest_Response> lstRoles = await _productItemRepository.GetLabSubTestList(parameters);
+            _response.Data = lstRoles.ToList();
+            _response.Total = parameters.Total;
+            return _response;
+        }
+
+        [Route("[action]")]
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<ResponseModel> GetLabSubTestById(int Id)
+        {
+            if (Id <= 0)
+            {
+                _response.Message = "Id is required";
+            }
+            else
+            {
+                var vResultObj = await _productItemRepository.GetLabSubTestById(Id);
                 _response.Data = vResultObj;
             }
             return _response;

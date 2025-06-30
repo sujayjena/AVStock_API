@@ -12,22 +12,41 @@ namespace AVStock.Application.Models
     {
     }
 
-    #region Lab Name
+    #region Lab Test
 
-    public class LabName_Request : BaseEntity
+    public class LabTest_Request : BaseEntity
     {
         public string? ServiceCode { get; set; }
-        public string? LabName { get; set; }
+        public string? TestName { get; set; }
         public int? DepartmentId { get; set; }
         public bool? IsActive { get; set; }
     }
 
-    public class LabName_Response : BaseResponseEntity
+    public class LabTest_Response : BaseResponseEntity
     {
         public string? ServiceCode { get; set; }
-        public string? LabName { get; set; }
+        public string? TestName { get; set; }
         public int? DepartmentId { get; set; }
         public string? DepartmentName { get; set; }
+        public bool? IsActive { get; set; }
+    }
+
+    #endregion
+
+    #region Lab Sub Test
+
+    public class LabSubTest_Request : BaseEntity
+    {
+        public int? LabTestId { get; set; }
+        public string? SubTestName { get; set; }
+        public bool? IsActive { get; set; }
+    }
+
+    public class LabSubTest_Response : BaseResponseEntity
+    {
+        public int? LabTestId { get; set; }
+        public string? TestName { get; set; }
+        public string? SubTestName { get; set; }
         public bool? IsActive { get; set; }
     }
 

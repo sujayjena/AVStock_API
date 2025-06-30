@@ -21,21 +21,21 @@ namespace AVStock.Persistence.Repositories
             _configuration = configuration;
         }
 
-        #region Lab Name
-        public async Task<int> SaveLabName(LabName_Request parameters)
+        #region Lab Test
+        public async Task<int> SaveLabTest(LabTest_Request parameters)
         {
             DynamicParameters queryParameters = new DynamicParameters();
             queryParameters.Add("@Id", parameters.Id);
             queryParameters.Add("@ServiceCode", parameters.ServiceCode.SanitizeValue());
-            queryParameters.Add("@LabName", parameters.LabName.SanitizeValue());
+            queryParameters.Add("@TestName", parameters.TestName.SanitizeValue());
             queryParameters.Add("@DepartmentId", parameters.DepartmentId);
             queryParameters.Add("@IsActive", parameters.IsActive);
             queryParameters.Add("@UserId", SessionManager.LoggedInUserId);
 
-            return await SaveByStoredProcedure<int>("SaveLabName", queryParameters);
+            return await SaveByStoredProcedure<int>("SaveLabTest", queryParameters);
         }
 
-        public async Task<IEnumerable<LabName_Response>> GetLabNameList(BaseSearchEntity parameters)
+        public async Task<IEnumerable<LabTest_Response>> GetLabTestList(BaseSearchEntity parameters)
         {
             DynamicParameters queryParameters = new DynamicParameters();
             queryParameters.Add("@SearchText", parameters.SearchText.SanitizeValue());
@@ -45,17 +45,55 @@ namespace AVStock.Persistence.Repositories
             queryParameters.Add("@Total", parameters.Total, null, System.Data.ParameterDirection.Output);
             queryParameters.Add("@UserId", SessionManager.LoggedInUserId);
 
-            var result = await ListByStoredProcedure<LabName_Response>("GetLabNameList", queryParameters);
+            var result = await ListByStoredProcedure<LabTest_Response>("GetLabTestList", queryParameters);
             parameters.Total = queryParameters.Get<int>("Total");
 
             return result;
         }
 
-        public async Task<LabName_Response?> GetLabNameById(int Id)
+        public async Task<LabTest_Response?> GetLabTestById(int Id)
         {
             DynamicParameters queryParameters = new DynamicParameters();
             queryParameters.Add("@Id", Id);
-            return (await ListByStoredProcedure<LabName_Response>("GetLabNameById", queryParameters)).FirstOrDefault();
+            return (await ListByStoredProcedure<LabTest_Response>("GetLabTestById", queryParameters)).FirstOrDefault();
+        }
+
+        #endregion
+
+        #region Lab Sub Test
+        public async Task<int> SaveLabSubTest(LabSubTest_Request parameters)
+        {
+            DynamicParameters queryParameters = new DynamicParameters();
+            queryParameters.Add("@Id", parameters.Id);
+            queryParameters.Add("@LabTestId", parameters.LabTestId);
+            queryParameters.Add("@SubTestName", parameters.SubTestName);
+            queryParameters.Add("@IsActive", parameters.IsActive);
+            queryParameters.Add("@UserId", SessionManager.LoggedInUserId);
+
+            return await SaveByStoredProcedure<int>("SaveLabSubTest", queryParameters);
+        }
+
+        public async Task<IEnumerable<LabSubTest_Response>> GetLabSubTestList(BaseSearchEntity parameters)
+        {
+            DynamicParameters queryParameters = new DynamicParameters();
+            queryParameters.Add("@SearchText", parameters.SearchText.SanitizeValue());
+            queryParameters.Add("@IsActive", parameters.IsActive);
+            queryParameters.Add("@PageNo", parameters.PageNo);
+            queryParameters.Add("@PageSize", parameters.PageSize);
+            queryParameters.Add("@Total", parameters.Total, null, System.Data.ParameterDirection.Output);
+            queryParameters.Add("@UserId", SessionManager.LoggedInUserId);
+
+            var result = await ListByStoredProcedure<LabSubTest_Response>("GetLabSubTestList", queryParameters);
+            parameters.Total = queryParameters.Get<int>("Total");
+
+            return result;
+        }
+
+        public async Task<LabSubTest_Response?> GetLabSubTestById(int Id)
+        {
+            DynamicParameters queryParameters = new DynamicParameters();
+            queryParameters.Add("@Id", Id);
+            return (await ListByStoredProcedure<LabSubTest_Response>("GetLabSubTestById", queryParameters)).FirstOrDefault();
         }
 
         #endregion

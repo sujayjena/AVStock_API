@@ -10,11 +10,19 @@ namespace AVStock.Application.Interfaces
 {
     public interface IProductItemRepository
     {
-        #region Lab Name
+        #region Lab Test
 
-        Task<int> SaveLabName(LabName_Request parameters);
-        Task<IEnumerable<LabName_Response>> GetLabNameList(BaseSearchEntity parameters);
-        Task<LabName_Response?> GetLabNameById(int Id);
+        Task<int> SaveLabTest(LabTest_Request parameters);
+        Task<IEnumerable<LabTest_Response>> GetLabTestList(BaseSearchEntity parameters);
+        Task<LabTest_Response?> GetLabTestById(int Id);
+
+        #endregion
+
+        #region Lab Sub Test
+
+        Task<int> SaveLabSubTest(LabSubTest_Request parameters);
+        Task<IEnumerable<LabSubTest_Response>> GetLabSubTestList(BaseSearchEntity parameters);
+        Task<LabSubTest_Response?> GetLabSubTestById(int Id);
 
         #endregion
 
