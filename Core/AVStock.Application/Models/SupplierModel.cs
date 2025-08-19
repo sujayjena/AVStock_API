@@ -34,6 +34,7 @@ namespace AVStock.Application.Models
 
     public class Supplier_Response : BaseResponseEntity
     {
+        public string? SupplierCode { get; set; }
         public string? SupplierName { get; set; }
         public int? SupplierTypeId { get; set; }
         public string? SupplierType { get; set; }

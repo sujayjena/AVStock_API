@@ -41,7 +41,14 @@ namespace AVStock.API.Controllers.Admin
             }
             else
             {
-                _response.Message = "Record details saved successfully";
+                if (parameters.Id == 0)
+                {
+                    _response.Message = "Record details saved successfully";
+                }
+                else
+                {
+                    _response.Message = "Record updated successfully";
+                }
             }
 
             _response.Id = result;

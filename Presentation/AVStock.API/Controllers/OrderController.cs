@@ -47,9 +47,16 @@ namespace AVStock.API.Controllers
             }
             else
             {
-                _response.Message = "Record details saved successfully";
+                if (parameters.Id == 0)
+                {
+                    _response.Message = "Record details saved successfully";
+                }
+                else
+                {
+                    _response.Message = "Record updated successfully";
+                }
 
-                foreach(var item in parameters.OrderDetailsList)
+                foreach (var item in parameters.OrderDetailsList)
                 {
                     var vOrderDetails_Request = new OrderDetails_Request();
                     vOrderDetails_Request.Id = item.Id;
